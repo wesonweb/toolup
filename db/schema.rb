@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_07_203112) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_204530) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bookmarks", force: :cascade do |t|
+  create_table "bookings", force: :cascade do |t|
     t.date "date"
     t.date "start_date"
     t.date "end_date"
@@ -23,8 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_203112) do
     t.bigint "tool_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["tool_id"], name: "index_bookmarks_on_tool_id"
-    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+    t.index ["tool_id"], name: "index_bookings_on_tool_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
   create_table "tools", force: :cascade do |t|
@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_203112) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookmarks", "tools"
-  add_foreign_key "bookmarks", "users"
+  add_foreign_key "bookings", "tools"
+  add_foreign_key "bookings", "users"
   add_foreign_key "tools", "users"
 end
