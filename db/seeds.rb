@@ -3,5 +3,48 @@
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+#   movies = Movie.create([{ type: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "seeding database with tools..."
+tools = Tool.create!([
+  {
+    type: "Hammer",
+    description: "New hammer, never used",
+    price: 10,
+    postcode: "N7 9HF",
+    image: "https://images.ffx.co.uk/tools/CLHF20.jpg?w=1280&h=960&scale=both",
+    user_id: 1
+  },
+  { type: "Circular saw",
+    description: "Circular saw in mint condition, complete with blade",
+    price: 25,
+    postcode: "SE28 0EL",
+    image: "https://ik.imagekit.io/pimberly/5a573819182f915efb7bd083/b10a96d7/5b029b97c3a6660178c96faf.jpg",
+    user_id: 1
+  },
+  { type: "Drill",
+    description: "Makita cordless drill, 18v, 2 batteries, charger, case",
+    price: 30,
+    postcode: "SW3 3PX",
+    image: "https://itslondon.s3.amazonaws.com/p/alt/xxl/MAK453SET52_2.jpg",
+    user_id: 1
+  },
+  {
+    type: "Axe",
+    description: "Axe in good condition",
+    price: 15,
+    postcode: "E7 0EN",
+    image: "https://cdn.shopify.com/s/files/1/0331/2805/4922/files/CGT05650_1_2048x2048.jpg?v=1612217326",
+    user_id: 1
+  },
+  {
+    type: "Clamp",
+    description: "Clamp in good condition",
+    price: 5,
+    postcode: "NW3 5RN",
+    image: "https://i5.walmartimages.com/asr/1466f16e-a7ac-4b56-8324-a91522f565d8_1.d35c799abde6ed00c68f49302e9da608.jpeg",
+    user_id: 1
+  }
+])
+puts "done!"
