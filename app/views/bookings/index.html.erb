@@ -1,0 +1,17 @@
+<div class="card-category"
+>
+ <h1><% @tool.name %></h1>
+</div>
+
+<div class="container mb-5">
+  <div class="d-flex justify-content-between my-6">
+  <% @bookings.each do |booking| %>
+    <small class="flex-grow-1"><%= booking.start_date %></small>
+    <small class="flex-grow-1"><%= booking.end_date %></small>
+    <small class="flex-grow-1"><%= booking.date %></small>
+    <small class="flex-grow-1"><%= booking.status %></small>
+    <small ><%= link_to "delete", bookings_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your booking"}, class: 'text-danger' %>
+    </small>
+ <% end %>
+</div>
+  </div>
