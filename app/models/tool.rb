@@ -1,5 +1,5 @@
 class Tool < ApplicationRecord
-  TYPES = ["Hammer", "Saw", "Axe", "Drill", "Clamp"]
+  TYPES = ["Hammer", "Circular saw", "Axe", "Drill", "Clamp"]
 
   belongs_to :user
   has_many :booking

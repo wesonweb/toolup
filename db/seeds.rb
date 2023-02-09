@@ -9,21 +9,21 @@
 puts "seeding database with tools..."
 tools = Tool.create!([
   {
-    type: "Hammer",
+    name: "Hammer",
     description: "New hammer, never used",
     price: 10,
     postcode: "N7 9HF",
     image: "https://images.ffx.co.uk/tools/CLHF20.jpg?w=1280&h=960&scale=both",
     user_id: 1
   },
-  { type: "Circular saw",
+  { name: "Circular saw",
     description: "Circular saw in mint condition, complete with blade",
     price: 25,
     postcode: "SE28 0EL",
     image: "https://ik.imagekit.io/pimberly/5a573819182f915efb7bd083/b10a96d7/5b029b97c3a6660178c96faf.jpg",
     user_id: 1
   },
-  { type: "Drill",
+  { name: "Drill",
     description: "Makita cordless drill, 18v, 2 batteries, charger, case",
     price: 30,
     postcode: "SW3 3PX",
@@ -31,7 +31,7 @@ tools = Tool.create!([
     user_id: 1
   },
   {
-    type: "Axe",
+    name: "Axe",
     description: "Axe in good condition",
     price: 15,
     postcode: "E7 0EN",
@@ -39,7 +39,7 @@ tools = Tool.create!([
     user_id: 1
   },
   {
-    type: "Clamp",
+    name: "Clamp",
     description: "Clamp in good condition",
     price: 5,
     postcode: "NW3 5RN",
