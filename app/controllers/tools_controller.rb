@@ -1,9 +1,11 @@
 class ToolsController < ApplicationController
   def index
+    @tools = Tool.all
   end
 
   def show
-    @tools = Tool.all
+    @tool = Tool.new
+    @review = Review.new(tool: @tool)
   end
 
   def new

@@ -1,50 +1,39 @@
-<h1>Tools#show</h1>
-<p>Find me in app/views/tools/show.html.erb</p>
+
 
 <div class="position-relative">
-  <div class="card-category card-large" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('list_background.jpg') %>)">
-    <h1><%= @list.name %></h1>
+  <div class="card-category card-large">
+    <h1><%= @tool.name %></h1>
   </div>
-  <span class="movie-tag"><%= pluralize(@list.movies.size, "movie") %></span>
 </div>
 <div class="container mb-5">
   <div class="d-flex justify-content-between my-4">
-    <span class="mb-2 d-block"><small><em class="text-muted"><%= "You haven't saved any movies yet!" if @list.movies.empty? %></em></small></span>
     <div>
-      <button type="button" class="btn btn-flat" data-bs-toggle="modal" data-bs-target="#new_movie_modal">
-        add a movie
-      </button>
-      <%= link_to "delete this list", list_path(@list), class: "btn btn-cancel", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" } %>
+       <h2> Tool details</h2>
+
+
+<p> This <%= @tool.name %> is located at <%= @tool.postcode %> </p>
+<p> Try to put the map here - on the right - add a flexbox</p>
+<p> This tool costs <%= @tool.price%> per day
+<p> Tool description: <%= @tool.description %></p>
+<p> See the photos: <%= image_tag tool.image_url, alt: @tool.name %>
+<p>
+<br>
+<h3> Reviews </h3>
+<p> See what our users said about this <%= tool.name %> </p>
+
+  <%# <% @tool.reviews.each do |review| %>
+    <%# <li><%= review.rating</li> %>
+    <%# <li><%= review.comment</li> %>
+  <%# <% end %>
+
+      <%# <%= link_to "book this tool", tool_path(@tool), class: "btn btn-primary", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to book this tool?" } %>
     </div>
   </div>
-  <div class="row my-2">
-    <% @list.movies.each do |movie| %>
-      <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-      <div class="col-12 col-sm-6 mb-4" data-aos="zoom-in">
-        <div class="bg-white rounded shadow h-100">
-          <%= image_tag movie.poster_url, alt: movie.title, class: "movie-img rounded-top" %>
-          <div class="p-3 rounded-bottom d-flex flex-column">
-            <strong><%= movie.title %> <span class="text-muted font-weight-normal">• <%= movie.rating %> <i class="fas fa-star star-yellow"></i></span></strong>
-            <small class="text-muted"><%= movie.overview %></small>
-            <div class="d-flex align-items-end justify-content-between pt-4">
-              <div>
-                <i class="fas fa-quote-left me-2"></i><small class="flex-grow-1"><%= bookmark.comment %></small>
-              </div>
-              <small class="text-right flex-shrink-0"><%= link_to "delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove #{movie.title} from your #{@list.name} list"}, class: 'text-danger' %></small>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <hr class="my-5">
-  <div class="row">
-    <div class="col-12 col-sm-6">
       <h3>Reviews</h3>
-      <% if @list.reviews.empty? %>
-        <small><em class="text-muted">Be the first one to review this list</em></small>
+      <% if @tools.reviews.empty? %>
+        <small><em class="text-muted"> No reviews yet </em></small>
       <% end %>
-      <% @list.reviews.each do |review| %>
+      <% @tools.reviews.each do |review| %>
         <div>
           <% review.rating.times do %>
             <i class="fas fa-star star-yellow"></i>
@@ -54,18 +43,5 @@
         </div>
         <hr>
       <% end %>
+          <p class="btn btn-success btn-lg"> <%= link_to "<button>Back to Tools </button>".html_safe, tools_path %> </p>
     </div>
-    <div class="col-12 col-sm-6">
-      <div class="bg-white rounded p-3">
-        <h5>Add your review</h5>
-        <%= simple_form_for [@list, @review] do |f| %>
-          <%= f.input :comment, placeholder: "Add your review here..." %>
-          <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "star-rating" } } %>
-          <%= f.submit class:"btn btn-flat" %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
-
-<%= render "bookmarks/modal", list: @list, bookmark: @bookmark %>

@@ -1,4 +1,4 @@
-Rails.application.routes.draw doß
+Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   resources :tools, except: [:edit, :update] do
