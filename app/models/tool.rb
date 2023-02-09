@@ -6,5 +6,5 @@ class Tool < ApplicationRecord
 
   validates :price, :postcode, presence: true
   validates :price, numericality: { only_integer: true }
-  validates :type, inclusion: { in: TYPES }
+  validates :name, inclusion: { in: TYPES }
 end
