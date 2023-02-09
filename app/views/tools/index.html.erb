@@ -5,8 +5,32 @@
       <ul class="list-group mb-3">
         <% @tools.each do |tool| %>
           <li class="list-group-item">
-            <%= link_to tool.name, tool_path(tool) %>
+             <table class="table table-bordered">
+              <tbody>
+                <tr>
+                <th scope="row">Tool type</th>
+                <td><%= tool.type %></td>
+                </tr>
+                <tr>
+                <th scope="row">Price</th>
+                <td><%= tool.price %></td>
+                </tr>
+                <tr>
+                <th scope="row">Post Code</th>
+                <td><%= tool.postcode %></td>
+                </tr>
+                <tr>
+                <th scope="row">Description</th>
+                <td><%= tool.description %></td>
+                </tr>
+                <tr>
+                <th scope="row">Book</th>
+                <td><%= link_to "Book", book_path, class: 'btn btn-primary' %></td>
+                </tr>
+              </tbody>
+            </table>
           </li>
+
         <% end %>
       </ul>
       <%= link_to "Add a new Tool", new_tool_path, class: 'btn btn-primary' %>
