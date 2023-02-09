@@ -5,7 +5,7 @@
       <%= simple_form_for @tool do |f| %>
         <%= f.input :type, collection: Tool::TYPES %>
         <%= f.input :price %>
-        <%= f.input :location %>
+        <%= f.input :postcode %>
         <%= f.input :description %>
         <%= f.submit class: 'btn btn-primary' %>
       <% end %>

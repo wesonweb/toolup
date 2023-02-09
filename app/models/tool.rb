@@ -4,7 +4,7 @@ class Tool < ApplicationRecord
   belongs_to :user
   has_many :booking
 
-  validates :price, :location, presence: true
+  validates :price, :postcode, presence: true
   validates :price, numericality: { only_integer: true }
   validates :type, inclusion: { in: TYPES }
 end
