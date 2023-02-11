@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   #temp
-  get '/tools/s/:id', to: 'tools#index'
+  get '/tools/s', to: 'tools#index'
 
   resources :tools, except: [:edit, :update] do
     resources :bookings, only: [:new, :create] do

@@ -5,10 +5,20 @@ class ToolsController < ApplicationController
    # @tools = Tool.all
 
    #temp
-    if params[:id].present?
-      @tools = Tool.where("description ILIKE ?", "%#{params[:id]}%")
+    if params[:search].present?
+      tmp_tools = Tool.where("description ILIKE ?", "%#{params[:search]}%")
     else
-      @tools = Tool.all
+      tmp_tools = Tool.all
+      #@tools = Tool.all.order('tools.price ASC')
+    end
+    if params[:order].present?
+      if params[:order] == "asc"
+        @tools = tmp_tools.order('tools.price ASC')
+      else
+        @tools = tmp_tools.order('tools.price DESC')
+      end
+    else
+      @tools = tmp_tools
     end
   end
 

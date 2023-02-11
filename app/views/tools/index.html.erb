@@ -3,30 +3,37 @@ function getSearch() {
   var e = document.getElementById('search_text');
   var val = e.value;
   if (val !== "" ) {
-    location.href = "/tools/s/" + val;
+    location.href = "/tools/s?search=" + val;
   }
   else {
     location.href = "/tools/";
   }
-  // Do the rest here
+
 }
+function getSort() {
+  var e = document.getElementById('search_text');
+  var val = e.value;
+  var mystr = document.getElementById('sort');
+  location.href = "/tools/s?search=" + val + "&" + mystr.value ;
+}
+
 </script>
 
 <div class="container-fluid container py-3 mt-4">
 <h2 class="h3">Tools available nearby</h2>
 <div class="input-group rounded">
-  <input type="search" id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <input type="search" id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value=<%= params[:search]%> >
   <span class="input-group-text border-0" id="search-addon">
     <i class="fas fa-search" onclick='getSearch()'></i>
   </span>
 </div>
 <div class="card-body py-1 rounded " >
   <!-- AUTO COMPLETE DROPDOWN -->
-  <select class="selectpicker form-control border-0 mb-1 px-1 py-1 rounded shadow">
+  <select id="sort" class="selectpicker form-control border-0 mb-1 px-1 py-1 rounded shadow" onchange='getSort()'>
       <option value="">---Sort by---</option>
       <option value="Distance">Distance (nearest first)</option>
-      <option value="Price_low">Price (lowerest first)</option>
-      <option value="Price_hight">Price (highest first)</option>
+      <option value="order=asc">Price (lowerest first)</option>
+      <option value="order=desc">Price (highest first)</option>
       <option value="Rating_high">Rating (highest first)</option>
       <option value="Rating_low">Rating (lowerest first)</option>
   </select>
