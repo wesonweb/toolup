@@ -1,29 +1,42 @@
+<script>
+function getSearch() {
+  var e = document.getElementById('search_text');
+  var val = e.value;
+  if (val !== "" ) {
+    location.href = "/tools/s/" + val;
+  }
+  else {
+    location.href = "/tools/";
+  }
+  // Do the rest here
+}
+</script>
 
 <div class="container-fluid container py-3 mt-4">
 <h2 class="h3">Tools available nearby</h2>
 <div class="input-group rounded">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <input type="search" id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
   <span class="input-group-text border-0" id="search-addon">
-    <i class="fas fa-search"></i>
+    <i class="fas fa-search" onclick='getSearch()'></i>
   </span>
 </div>
-              <div class="card-body py-1 rounded " >
-                        <!-- AUTO COMPLETE DROPDOWN -->
-                        <select class="selectpicker form-control border-0 mb-1 px-1 py-1 rounded shadow">
-                            <option value="">---Sort by---</option>
-                            <option value="Distance">Distance (nearest first)</option>
-                            <option value="Price_low">Price (lowerest first)</option>
-                            <option value="Price_hight">Price (highest first)</option>
-                            <option value="Rating_high">Rating (highest first)</option>
-                            <option value="Rating_low">Rating (lowerest first)</option>
-                        </select>
-                    </div>
+<div class="card-body py-1 rounded " >
+  <!-- AUTO COMPLETE DROPDOWN -->
+  <select class="selectpicker form-control border-0 mb-1 px-1 py-1 rounded shadow">
+      <option value="">---Sort by---</option>
+      <option value="Distance">Distance (nearest first)</option>
+      <option value="Price_low">Price (lowerest first)</option>
+      <option value="Price_hight">Price (highest first)</option>
+      <option value="Rating_high">Rating (highest first)</option>
+      <option value="Rating_low">Rating (lowerest first)</option>
+  </select>
+</div>
     <div class="row mt-4">
       <% @tools.each do |tool| %>
-        <div class="col-md-3">
-            <div class="card mb-3" onclick="window.location='tools/<%= tool.id %>'">
-                <img src="<%=tool.image_url%>" class="card-img-top" alt="...">
-                <div class="card-body">
+        <div class="col-md-3  ronded p-3  d-flex " >
+            <div class="card mb-3 "  style="width: 18rem;" onclick="window.location='/tools/<%= tool.id %>'">
+               <img src="<%=tool.image_url%>" class="card-img-top" alt="...">
+               <div class="card-body" >
                     <h5 class="card-title"><%= tool.name %></h5>
                     <p class="card-text">Price: £<%= tool.price %> / day</p>
                     <p class="card-text"><%= tool.description %></p>
@@ -33,7 +46,6 @@
                     <% end %>
                     </h5>
                     <p class="card-text"><small class="text-muted">Location: <%= tool.postcode %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
-
                 </div>
             </div>
         </div>

@@ -2,7 +2,14 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_list, only: [:show, :destroy]
   def index
-    @tools = Tool.all
+   # @tools = Tool.all
+
+   #temp
+    if params[:id].present?
+      @tools = Tool.where("description ILIKE ?", "%#{params[:id]}%")
+    else
+      @tools = Tool.all
+    end
   end
 
   def show
