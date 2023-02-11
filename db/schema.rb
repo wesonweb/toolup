@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_210354) do
   create_table "tools", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.string "location"
+    t.string "postcode"
     t.string "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

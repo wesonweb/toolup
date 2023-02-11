@@ -1,0 +1,16 @@
+<h1><strong>Book this tool</strong></h1>
+  <%= simple_form_for [@tool, @user, @booking] do |f| %>
+    <div class="book-form">
+      <div class="small-form-box">
+        <div class="booking-input-box my-3 small-form-input">
+          <%= f.input :start_date, as: :date, html5: true %>
+        </div>
+        <div class="booking-input-box my-3 small-form-input">
+          <%= f.input :end_date, as: :date, html5: true %>
+        </div>
+      <div id="submit-btn">
+        <%= f.submit "Submit booking", class: "btn btn-black row-form-btn" %>
+      </div>
+    </div>
+  <% end %>
+</div>
