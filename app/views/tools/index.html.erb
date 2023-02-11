@@ -1,6 +1,18 @@
 
 <div class="container-fluid container py-3 mt-4">
 <h2 class="h3">Tools available nearby</h2>
+              <div class="card-body p-0">
+
+                        <!-- AUTO COMPLETE DROPDOWN -->
+                        <select class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow">
+                            <option value="Distance">Distance (nearest first)</option>
+                            <option value="Price_low">Price (lowerest first)</option>
+                            <option value="Price_hight">Price (highest first)</option>
+                            <option value="Rating_high">Rating (highest first)</option>
+                            <option value="Rating_low">Rating (lowerest first)</option>
+
+                        </select>
+                    </div>
     <div class="row mt-4">
       <% @tools.each do |tool| %>
         <div class="col-md-3">
@@ -8,7 +20,7 @@
                 <img src="<%=tool.image_url%>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><%= tool.name %></h5>
-                    <p class="card-text">Price: £<%= tool.price %></p>
+                    <p class="card-text">Price: £<%= tool.price %> / day</p>
                     <p class="card-text"><%= tool.description %></p>
                     <h5 class="card-title text-info">
                     <% for i in 1..rand(1...5) do %>
