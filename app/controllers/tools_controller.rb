@@ -4,19 +4,30 @@ class ToolsController < ApplicationController
   end
 
   def show
-    @tool = Tool.new
-    # @review = Review.new(tool: @tool)
   end
 
   def new
+    @tool = Tool.new
   end
 
   def create
+    @tool = Tool.new(tool_params)
+    if @tool.save
+      redirect_to tool_path(@tool)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
   end
 
   def destroy
+  end
+
+  private
+
+  def tool_params
+    params.require(:tool).permit(:type, :price, :postcode, :description)
   end
 end
