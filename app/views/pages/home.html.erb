@@ -1,2 +1,13 @@
-<h1>Welcome To Home Page</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner"
+    style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)),
+    url('<%= image_path "toolup-banner.jpg" %>');">
+  <div class="container">
+    <div class="row d-flex justify-content-end">
+      <div class="col-md-6 d-flex flex-column justify-content-end">
+        <h1>toolUp</h1>
+        <p class="lead">Why buy when you can borrow!</p>
+        <%= link_to "view tools", tools_path, class: "col-6 btn btn-lg btn-primary text-start text-decoration-none" %>
+      </div>
+    </div>
+  </div>
+</div>
