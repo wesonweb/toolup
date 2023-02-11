@@ -1,4 +1,4 @@
-# require "Time"
+require 'date'
 class BookingsController < ApplicationController
   before_action :set_booking, only: :destroy
   before_action :set_tool, only: %i[new create]
@@ -13,8 +13,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.tool = @tool
-    @booking.date = Date.now
+    @booking.tool = @tools
+    @booking.date = Date.new
     if @booking.save
       redirect_to  tool_bookings_path(@tool)
     else
