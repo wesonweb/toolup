@@ -1,16 +1,21 @@
 
 <div class="container-fluid container py-3 mt-4">
 <h2 class="h3">Tools available nearby</h2>
-              <div class="card-body p-0">
-
+<div class="input-group rounded">
+  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</div>
+              <div class="card-body py-1 rounded " >
                         <!-- AUTO COMPLETE DROPDOWN -->
-                        <select class="selectpicker form-control border-0 mb-1 px-4 py-4 rounded shadow">
+                        <select class="selectpicker form-control border-0 mb-1 px-1 py-1 rounded shadow">
+                            <option value="">---Sort by---</option>
                             <option value="Distance">Distance (nearest first)</option>
                             <option value="Price_low">Price (lowerest first)</option>
                             <option value="Price_hight">Price (highest first)</option>
                             <option value="Rating_high">Rating (highest first)</option>
                             <option value="Rating_low">Rating (lowerest first)</option>
-
                         </select>
                     </div>
     <div class="row mt-4">
