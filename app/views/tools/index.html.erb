@@ -1,40 +1,21 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
-      <h1>All tools</h1>
-      <ul class="list-group mb-3">
-        <% @tools.each do |tool| %>
-          <li class="list-group-item">
-             <table class="table table-bordered">
-              <tbody>
-                <tr>
-                <th scope="row">Tool type</th>
-                <td><%= tool.name %></td>
-                </tr>
-                <tr>
-                <th scope="row">Price</th>
-                <td><%= tool.price %></td>
-                </tr>
-                <tr>
-                <th scope="row">Post Code</th>
-                <td><%= tool.postcode %></td>
-                </tr>
-                <tr>
-                <th scope="row">Description</th>
-                <td><%= tool.description %></td>
-                </tr>
-                <tr>
-                <th scope="row">Book</th>
-                <!--<td><%= link_to "Book", booking_path, class: 'btn btn-primary' %></td>
-                -->
-                </tr>
-              </tbody>
-            </table>
-          </li>
 
-        <% end %>
-      </ul>
-      <%= link_to "Add a new Tool", new_tool_path, class: 'btn btn-primary' %>
+<div class="container-fluid container py-3 mt-4">
+<h2 class="h3">Tools available nearby</h2>
+    <div class="row mt-4">
+      <% @tools.each do |tool| %>
+        <div class="col-md-3">
+            <div class="card mb-3" onclick="window.location='tools/<%= tool.id %>'">
+                <img src="<%=tool.image_url%>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><%= tool.name %></h5>
+                    <p class="card-text">Price: £<%= tool.price %></p>
+                    <p class="card-text"><%= tool.description %></p>
+                    <h5 class="card-title text-info">&#9733;&#9733;&#9733;&#9733;</h5>
+                    <p class="card-text"><small class="text-muted">Location: <%= tool.postcode %> (<%=rand(1...5)%> miles from you)</small></p>
+
+                </div>
+            </div>
+        </div>
+      <% end %>
     </div>
-  </div>
 </div>
