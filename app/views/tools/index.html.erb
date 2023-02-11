@@ -10,8 +10,12 @@
                     <h5 class="card-title"><%= tool.name %></h5>
                     <p class="card-text">Price: £<%= tool.price %></p>
                     <p class="card-text"><%= tool.description %></p>
-                    <h5 class="card-title text-info">&#9733;&#9733;&#9733;&#9733;</h5>
-                    <p class="card-text"><small class="text-muted">Location: <%= tool.postcode %> (<%=rand(1...5)%> miles from you)</small></p>
+                    <h5 class="card-title text-info">
+                    <% for i in 1..rand(1...5) do %>
+                    &#9733;
+                    <% end %>
+                    </h5>
+                    <p class="card-text"><small class="text-muted">Location: <%= tool.postcode %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
 
                 </div>
             </div>
