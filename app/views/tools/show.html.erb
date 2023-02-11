@@ -1,25 +1,22 @@
 
-
-<div class="position-relative">
-  <div class="card-category card-large">
-    <h1><%= @tool.name %></h1>
+<div class="main-card">
+  <div class="tool-name">
+    <h1><%= @tool.type %></h1>
   </div>
-</div>
-<div class="container mb-5">
-  <div class="d-flex justify-content-between my-4">
-    <div>
+
+<div class="tool-details container mb-5">
+  <div class="justify-content-between my-4">
        <h2> Tool details</h2>
 
-
-<p> This <%= @tool.name %> is located at <%= @tool.postcode %> </p>
+<p> This <%= @tool.type %> is located at <%= @tool.postcode %> </p>
 <p> Try to put the map here - on the right - add a flexbox</p>
 <p> This tool costs <%= @tool.price%> per day
 <p> Tool description: <%= @tool.description %></p>
-<p> See the photos: <%= image_tag tool.image_url, alt: @tool.name %>
+<%# <p> See the photos: <%= image_tag tool.image_url, alt: @tool.name %> %>
 <p>
 <br>
 <h3> Reviews </h3>
-<p> See what our users said about this <%= tool.name %> </p>
+<p> See what our users said about this <%= @tool.type %> </p>
 
   <%# <% @tool.reviews.each do |review| %>
     <%# <li><%= review.rating</li> %>
@@ -27,21 +24,25 @@
   <%# <% end %>
 
       <%# <%= link_to "book this tool", tool_path(@tool), class: "btn btn-primary", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to book this tool?" } %>
-    </div>
+
   </div>
+
+  <div class="reviews">
       <h3>Reviews</h3>
-      <% if @tools.reviews.empty? %>
-        <small><em class="text-muted"> No reviews yet </em></small>
-      <% end %>
-      <% @tools.reviews.each do |review| %>
-        <div>
-          <% review.rating.times do %>
-            <i class="fas fa-star star-yellow"></i>
-          <% end %>
-          <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small>
-          <p class="mb-0"><%= review.comment %></p>
-        </div>
-        <hr>
-      <% end %>
+      <%# <% if @tools.reviews.empty? %>
+        <%# <small><em class="text-muted"> No reviews yet </em></small> %>
+      <%# <% end %> %>
+      <%# <% @tools.reviews.each do |review| %> %>
+        <%# <div> %>
+          <%# <% review.rating.times do %> %>
+            <%# <i class="fas fa-star star-yellow"></i> %>
+          <%# <% end %> %>
+          <%# <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) %> ago</em></small> %>
+          <%# <p class="mb-0"><%= review.comment %></p> %> %>
+        <%# </div> %>
+        <%# <hr> %>
+      <%# <% end %> %>
+      </div>
           <p class="btn btn-success btn-lg"> <%= link_to "<button>Back to Tools </button>".html_safe, tools_path %> </p>
     </div>
+  </div>

@@ -5,7 +5,7 @@ class ToolsController < ApplicationController
 
   def show
     @tool = Tool.new
-    @review = Review.new(tool: @tool)
+    # @review = Review.new(tool: @tool)
   end
 
   def new
