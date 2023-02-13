@@ -2,7 +2,24 @@ class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_list, only: [:show, :destroy]
   def index
-    @tools = Tool.all
+   # @tools = Tool.all
+
+   #temp
+    if params[:search].present?
+      tmp_tools = Tool.where("description ILIKE ?", "%#{params[:search]}%")
+    else
+      tmp_tools = Tool.all
+      #@tools = Tool.all.order('tools.price ASC')
+    end
+    if params[:order].present?
+      if params[:order] == "asc"
+        @tools = tmp_tools.order('tools.price ASC')
+      else
+        @tools = tmp_tools.order('tools.price DESC')
+      end
+    else
+      @tools = tmp_tools
+    end
   end
 
   def show
