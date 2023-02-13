@@ -6,7 +6,14 @@
       <div class="col-md-6 d-flex flex-column justify-content-end">
         <h1>toolUp</h1>
         <p class="lead">Why buy when you can borrow!</p>
-        <%= link_to "view tools", tools_path, class: "col-6 btn btn-lg btn-primary text-start text-decoration-none" %>
+        <div class="row">
+          <div class="col d-flex gap-sm">
+            <%= link_to "Borrow a tool", tools_path, class: "col-6 btn btn-lg btn-primary rounded text-start text-decoration-none cta" %>
+            <%= link_to "Lend a tool", new_tool_path, class: "col-6 btn btn-lg btn-primary rounded text-start text-decoration-none cta" %>
+
+          </div>
+
+        </div>
       </div>
     </div>
   </div>

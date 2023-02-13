@@ -11,10 +11,15 @@
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   font-weight: bold;
+  font-size: 3.5rem;
 }
 
 .banner p {
+  font-size: 1.75rem;
   color: white;
-  opacity: .7;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.cta {
+  margin-right: 1rem;
 }
