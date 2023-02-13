@@ -19,7 +19,7 @@ function getSort() {
 
 </script>
 
-<div class="container-fluid container py-3 mt-4">
+<div class="container justify-content-center py-3 mt-4">
 <h2 class="h3">Tools available nearby</h2>
 <div class="input-group rounded">
   <input type="search" id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value=<%= params[:search]%> >
@@ -38,24 +38,27 @@ function getSort() {
       <option value="Rating_low">Rating (lowerest first)</option>
   </select>
 </div>
-    <div class="row mt-4">
-      <% @tools.each do |tool| %>
-        <div class="col-md-3  ronded p-3  d-flex " >
-            <div class="card mb-3 "  style="width: 18rem;" onclick="window.location='/tools/<%= tool.id %>'">
-               <img src="<%=tool.image_url%>" class="card-img-top" alt="...">
-               <div class="card-body" >
-                    <h5 class="card-title"><%= tool.name %></h5>
+    <div class="container-md-9 row mt-2 card-group">
+        <%# <div class="col rounded p-3"> %>
+        <% @tools.each do |tool| %>
+            <div class="col-sm-6 col-md-4 col-lg-3 rounded-3 mb-3">
+              <div class="card shadow-sm mb-3 h-100 border-0">
+                <img src="<%=tool.image_url%>" class="card-img-top tool-img" alt="picture of a <%=tool.name %>">
+                  <div class="card-body d-flex align-items-start flex-column" >
+                    <h2 class="card-title fs-3"><%= tool.name %></h2>
                     <p class="card-text">Price: £<%= tool.price %> / day</p>
-                    <p class="card-text"><%= tool.description %></p>
-                    <h5 class="card-title text-info">
-                    <% for i in 1..rand(1...5) do %>
-                    &#9733;
-                    <% end %>
-                    </h5>
-                    <p class="card-text"><small class="text-muted">Location: <%= tool.postcode %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
+                    <p class="card-text mb-auto"><%= tool.description %></p>
+                    <h3 class="card-title text-info fs-4">
+                      <% for i in 1..rand(1...5) do %>
+                      &#9733;
+                      <% end %>
+                    </h3>
+                    <p class="card-text"><small class="text-muted mb-auto">Location: <%= tool.postcode %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
+                    <%= link_to "View this tool", tool_path(tool), class: "btn btn-primary w-100 align-self-end" %>
+                  </div>
                 </div>
             </div>
+            <% end %>
         </div>
-      <% end %>
     </div>
 </div>
