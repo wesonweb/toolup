@@ -15,21 +15,21 @@ tools = Tool.create!([
     name: "Drill",
     description: "DeWalt cordless drill, with two batteries. 50 minute quick charge. Comes with case.",
     price: 15,
-    postcode: "N7 9HF",
+    address: "72 Park Avenue, London",
     image_url: "https://www.toolup.com/product-images/DeWalt-DCD940KX_10.jpg",
     user_id: 1
   },
   { name: "Circular saw",
     description: "DeWalt circular saw, 240v, 165mm blade. Comes with 2 batteries, charger and case",
     price: 25,
-    postcode: "SE28 0EL",
+    address: "98 Station Road, London",
     image_url: "https://www.neoadviser.com/wp-content/uploads/2019/01/1-1.jpg",
     user_id: 1
   },
   { name: "Drill",
     description: "Makita cordless drill, 18v, 2 batteries, charger, case",
     price: 20,
-    postcode: "SW3 3PX",
+    address: "81 The Crescent, London",
     image_url: "https://itslondon.s3.amazonaws.com/p/alt/xxl/MAK453SET52_2.jpg",
     user_id: 1
   },
@@ -37,7 +37,7 @@ tools = Tool.create!([
     name: "Jigsaw",
     description: "Bosch Electric Jigsaw. 500W motor and 70 mm cutting depth.",
     price: 10,
-    postcode: "E7 0EN",
+    address: "382 Kings Road, London",
     image_url: "https://cdn.store-assets.com/s/14425/i/2766186.gif",
     user_id: 1
   },
@@ -45,7 +45,7 @@ tools = Tool.create!([
     name: "Clamp",
     description: "Clamp in good condition",
     price: 5,
-    postcode: "NW3 5RN",
+    address: "6 The Grove, London",
     image_url: "https://i5.walmartimages.com/asr/1466f16e-a7ac-4b56-8324-a91522f565d8_1.d35c799abde6ed00c68f49302e9da608.jpeg",
     user_id: 1
   },
@@ -53,7 +53,7 @@ tools = Tool.create!([
     name: "Lawnmower",
     description: "Good quality electric lawnmower. Comes with 20m extension lead",
     price: 25,
-    postcode: "N11 5RQ",
+    address: "97 Church Street, London",
     image_url: "https://www.thespruce.com/thmb/qE5BgnZM0088uSs6NJ7UAmuo8iY=/1500x1500/filters:fill(auto,1)/1SP4142310-Greenworks-Push-Mower_HeroSquare-c25b5e052ed74bfa9f17112eb6da5dc2.jpg",
     user_id: 1
   },
@@ -61,7 +61,7 @@ tools = Tool.create!([
     name: "Leaf blower",
     description: "Powerful leaf blower, great for clearing up fallen leaves in the garden",
     price: 10,
-    postcode: "N11 5RQ",
+    address: "32 waterfall road, london",
     image_url: "https://www.chartattack.com/wp-content/uploads/2019/09/leaf.jpg",
     user_id: 1
   },
@@ -69,7 +69,7 @@ tools = Tool.create!([
     name: "Sander",
     description: "Hand-held sander. Variable speed and dust bag for dust extraction. Comes with sanding discs",
     price: 10,
-    postcode: "SW4 6SE",
+    address: "12 Luxor Street, London",
     image_url: "https://images-na.ssl-images-amazon.com/images/I/71mgCg-MfyL.jpg",
     user_id: 1
   }
