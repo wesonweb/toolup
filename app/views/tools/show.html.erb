@@ -1,33 +1,40 @@
-<div class="container-sm mt-4">
-
-  <h1 class="text-center my-5"><%= @tool.name %></h1>
-  <div class="row justify-content-center p-2">
-
-    <div class="col col-md-7 col-lg-5">
-
-      <%= image_tag @tool.image_url, alt: "#{@tool.description}", class: "mb-4 img-fluid tool-show-img" %>
-      <div class="tool-description my-3">
-        <h2>Tool description</h2>
-        <p><%= @tool.description %></p>
+<div class="tool-body">
+  <div class="container-sm mt-4">
+    <div class="row justify-content-center">
+      <div class="col col-md-6 my-5">
+        <div class="header">
+          <h1 class="text-center"><%= @tool.name %></h1>
+        </div>
       </div>
-      <div class="tool-location mt-3">
-        <h3>Location</h3>
-        <p> This <%= @tool.name%> is located at <%= @tool.postcode %> </p>
-        <p>MAP GOES HERE</p>
-      </div>
-      <div class="tool-reviews mt-3">
-        <h3 class="mt-3">Reviews</h3>
-        <p> See what our users said about this <%= @tool.name %> </p>
-      </div>
+    </div>
+
+    <div class="row justify-content-center p-2">
       <div class="col col-md-7 col-lg-5">
-        <%= link_to "Back to Tools".html_safe, tools_path, class: "btn btn-primary" %>
-      </div>
-    </div>
-    <div class="col col-md-5 col-lg-4">
-      <div class="tool-booking-form sticky-top">
-        <%= render "bookings/booking_form" %>
-      </div>
-    </div>
-  </div>
 
+        <%= image_tag @tool.image_url, alt: "#{@tool.description}", class: "mb-4 img-fluid tool-show-img" %>
+        <div class="tool-description my-3">
+          <h2>Tool description</h2>
+          <p><%= @tool.description %></p>
+        </div>
+        <div class="tool-location mt-3">
+          <h3>Location</h3>
+          <p> This <%= @tool.name%> is located at <%= @tool.postcode %> </p>
+          <p>MAP GOES HERE</p>
+        </div>
+        <div class="tool-reviews mt-3">
+          <h3 class="mt-3">Reviews</h3>
+          <p> See what our users said about this <%= @tool.name %> </p>
+        </div>
+        <div class="col col-md-7 col-lg-5">
+          <%= link_to "Back to Tools".html_safe, tools_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+      <div class="col col-md-5 col-lg-4">
+        <div class="tool-booking-form sticky-top">
+          <%= render "bookings/booking_form" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
