@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="main-card">
 <h1> Your toolUp bookings: </h1>
   <div class="tool-name">
@@ -5,5 +6,26 @@
     <h1> You made a booking </h1>
     <h2> Have fun! </h2>
     <p> You booked <%=@tool.name%> </p>
+=======
+<div class="container-md">
+  <div class="row my-4 justify-content-center">
+    <div class="col col-md-8">
+      <h1>Thank you for booking with toolUp </h1>
+      <h2>Your booking for ____ is confirmed.</h2>
+      <p>Image of tool to go here</p>
+    </div>
+    <div class="col col-md-4">
+      <h2> Booking details </h2>
+      <p> You can view your booking details below. </p>
+    </div>
+>>>>>>> master
   </div>
- </div>
+  <div class="row my-4 justify-content-center">
+    <div class="col col-md-8 d-flex">
+      <%= link_to "Borrow another tool", tools_path, class: "btn btn-primary mt-3 cta" %>
+      <%# link_to "View your bookings", bookings_path, class: "btn btn-primary mt-3" %>
+
+    </div>
+  </div>
+
+</div>

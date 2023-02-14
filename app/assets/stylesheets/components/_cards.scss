@@ -1,0 +1,18 @@
+// For product (tool) cards. They use Bootstrap's card component with these custom additions:
+
+
+.tool-img {
+  transition:  all 0.3s ease;
+}
+.card:hover img {
+  opacity: 0.9;
+}
+.tool-img {
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.tool-description {
+  color: $med-gray;
+}

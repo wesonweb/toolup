@@ -1,42 +1,65 @@
+<script>
+function getSearch() {
+  var e = document.getElementById('search_text');
+  var val = e.value;
+  if (val !== "" ) {
+    location.href = "/tools/s?search=" + val;
+  }
+  else {
+    location.href = "/tools/";
+  }
 
-<div class="container-fluid container py-3 mt-4">
-<h2 class="h3">Tools available nearby</h2>
-<div class="input-group rounded">
-  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-  <span class="input-group-text border-0" id="search-addon">
-    <i class="fas fa-search"></i>
-  </span>
-</div>
-              <div class="card-body py-1 rounded " >
-                        <!-- AUTO COMPLETE DROPDOWN -->
-                        <select class="selectpicker form-control border-0 mb-1 px-1 py-1 rounded shadow">
-                            <option value="">---Sort by---</option>
-                            <option value="Distance">Distance (nearest first)</option>
-                            <option value="Price_low">Price (lowerest first)</option>
-                            <option value="Price_hight">Price (highest first)</option>
-                            <option value="Rating_high">Rating (highest first)</option>
-                            <option value="Rating_low">Rating (lowerest first)</option>
-                        </select>
+}
+function getSort() {
+  var e = document.getElementById('search_text');
+  var val = e.value;
+  var mystr = document.getElementById('sort');
+  location.href = "/tools/s?search=" + val + "&" + mystr.value ;
+}
+
+</script>
+<div class="tools-body">
+  <div class="container-lg py-3 mt-4">
+  <h2 class="h3">Tools available nearby</h2>
+  <div class="input-group rounded">
+    <input type="search" id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value=<%= params[:search]%> >
+    <span class="input-group-text border-0" id="search-addon">
+      <i class="fas fa-search pe-auto" onclick='getSearch()'></i>
+    </span>
+  </div>
+  <div class="card-body py-1 rounded">
+    <!-- AUTO COMPLETE DROPDOWN -->
+    <select id="sort" class="selectpicker form-control form-select form-select-sm border mt-1 mb-1 px-1 py-1 rounded" onchange='getSort()'>
+        <option selected>Sort by</option>
+        <option value="Distance">Distance (nearest first)</option>
+        <option value="order=asc">Price (lowest first)</option>
+        <option value="order=desc">Price (highest first)</option>
+        <option value="Rating_high">Rating (highest first)</option>
+        <option value="Rating_low">Rating (lowest first)</option>
+    </select>
+  </div>
+      <div class="row mt-2 card-group">
+          <%# <div class="col rounded p-3"> %>
+          <% @tools.each do |tool| %>
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <div class="card rounded-3 shadow mb-3 h-100 border-0">
+                  <img src="<%=tool.image_url%>" class="card-img-top tool-img" alt="picture of a <%=tool.name %>">
+                    <div class="card-body py-3 d-flex align-items-start flex-column">
+                      <h2 class="card-title fs-3"><%= tool.name %></h2>
+                      <p class="card-text">Price: £<%= tool.price %> / day</p>
+                      <p class="card-text tool-description mb-auto"><%= tool.description %></p>
+                      <h3 class="card-title text-info fs-4">
+                        <% for i in 1..rand(1...5) do %>
+                        &#9733;
+                        <% end %>
+                      </h3>
+                      <p class="card-text"><small class="text-muted mb-auto">Location: <%= tool.postcode %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
+                      <%= link_to "View this tool", tool_path(tool), class: "btn btn-primary w-100 align-self-end" %>
                     </div>
-    <div class="row mt-4">
-      <% @tools.each do |tool| %>
-        <div class="col-md-3">
-            <div class="card mb-3" onclick="window.location='tools/<%= tool.id %>'">
-                <img src="<%=tool.image_url%>" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><%= tool.name %></h5>
-                    <p class="card-text">Price: £<%= tool.price %> / day</p>
-                    <p class="card-text"><%= tool.description %></p>
-                    <h5 class="card-title text-info">
-                    <% for i in 1..rand(1...5) do %>
-                    &#9733;
-                    <% end %>
-                    </h5>
-                    <p class="card-text"><small class="text-muted">Location: <%= tool.postcode %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
-
-                </div>
-            </div>
-        </div>
-      <% end %>
-    </div>
+                  </div>
+              </div>
+              <% end %>
+          </div>
+      </div>
+  </div>
 </div>

@@ -1,17 +1,28 @@
-<div class="card-category"
->
- <h1><% @tool.name %></h1>
-</div>
+
 
 <div class="container mb-5">
-  <div class="d-flex justify-content-between my-6">
-  <% @bookings.each do |booking| %>
-    <small class="flex-grow-1"><%= booking.start_date %></small>
-    <small class="flex-grow-1"><%= booking.end_date %></small>
-    <small class="flex-grow-1"><%= booking.date %></small>
-    <small class="flex-grow-1"><%= booking.status %></small>
-    <small ><%= link_to "delete", bookings_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your booking"}, class: 'text-danger' %>
-    </small>
- <% end %>
+<div class="row justify-content-center">
+  <div class="col col-md-6 my-5">
+  <h1 class="text-center">Welcome, <%= current_user.first_name %></h1>
+  <h2 class="text-center">Tools that you are currently hiring</h2>
+  <% if @bookings.length == 0 %>
+    <p class="text-center mt-2">You don't have any bookings yet</p>
+  <% end %>
+  </div>
 </div>
+  <ol class="list-group list-group-numbered">
+  <% @bookings.each do |booking| %>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Tool: <%= booking.tool.name %></div>
+      <small class="flex-grow-1">From: <%= booking.start_date %></small>
+      <small class="flex-grow-1">To: <%= booking.end_date %></small>
+      <small class="flex-grow-1">Booking made on: <%= booking.date %></small>
+      <small class="flex-grow-1"><%= booking.status %></small>
+    </div>
+      <%= link_to "delete", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your booking"}, class: "badge bg-danger rounded-pill text-light" %>
+      <%= link_to "view this tool", tool_path(booking.tool), class: "badge bg-primary rounded-pill text-light" %>
+    <% end %>
+    </li>
+    </ol>
   </div>
