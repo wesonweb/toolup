@@ -1,12 +1,12 @@
 require 'date'
 class BookingsController < ApplicationController
-  # before_action :set_booking, only: :destroy
+  before_action :set_booking, only: :destroy
   # before_action :set_tool, only: %i[new create]
 
   def index
     @bookings = Booking.all
-    @tools = Tool.all
-    @tool = Tool.find(params[:tool_id])
+    # @tools = Tool.all
+    # @tool = Tool.find(params[:tool_id])
   end
 
   # def new
@@ -33,7 +33,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to booking_path, status: :see_other
+    redirect_to bookings_path, status: :see_other
   end
 
   private
