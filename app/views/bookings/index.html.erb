@@ -15,8 +15,8 @@
   <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Tool: <%= booking.tool.name %></div>
-      <small class="flex-grow-1"><strong>From:</strong> <%= booking.start_date %></small>
-      <small class="flex-grow-1"><strong>To:</strong> <%= booking.end_date %></small>
+      <small class="flex-grow-1"><strong>From:</strong> <%= booking.start_date.strftime("%d/%m/%Y") %></small>
+      <small class="flex-grow-1"><strong>To:</strong> <%= booking.end_date.strftime("%d/%m/%Y") %></small>
       <small class="flex-grow-1">Booking made on: <%= booking.date %></small>
       <small class="flex-grow-1"><%= booking.status %></small>
     </div>
