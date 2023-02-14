@@ -7,10 +7,11 @@
         <h1>toolUp</h1>
         <p class="lead">Why buy when you can borrow!</p>
         <div class="row">
-          <div class="col d-flex gap-sm">
-            <%= link_to "Borrow a tool", tools_path, class: "col-6 btn btn-lg btn-primary rounded text-start text-decoration-none cta" %>
-            <%= link_to "Lend a tool", new_tool_path, class: "col-6 btn btn-lg btn-primary rounded text-start text-decoration-none cta" %>
-
+          <div class="col">
+            <%= link_to "Borrow a tool", tools_path, class: "col-6 mt-2 btn btn-lg btn-primary rounded text-start text-decoration-none cta" %>
+          <div class="col">
+            <%= link_to "or start lending tools", new_tool_path, class: "col-6 d-block mt-3 rounded text-start cta" %>
+          </div>
           </div>
 
         </div>

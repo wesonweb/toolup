@@ -1,9 +1,11 @@
 // Specific CSS for your home-page
 .banner {
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
+  background-attachment: scroll;
   padding: 200px 0;
+  height: 65vh;
 }
 
 .banner h1 {

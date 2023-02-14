@@ -1,16 +1,11 @@
-<div class="tool-body">
+<div class="tool-body py-5">
   <div class="container-sm">
-    <div class="row justify-content-center">
-      <div class="col col-md-6 py-5">
-        <div class="header">
-          <h1 class="text-center"><%= @tool.name %></h1>
-        </div>
-      </div>
-    </div>
 
     <div class="row justify-content-center p-2">
       <div class="col col-md-7 col-lg-5">
-
+        <div class="header mb-3">
+          <h1><%= @tool.name %></h1>
+        </div>
         <%= image_tag @tool.image_url, alt: "#{@tool.description}", class: "mb-4 img-fluid tool-show-img" %>
         <div class="tool-description my-3">
           <h2>Tool description</h2>
@@ -26,10 +21,10 @@
           <p> See what our users said about this <%= @tool.name %> </p>
         </div>
         <div class="col col-md-7 col-lg-5">
-          <%= link_to "Back to Tools".html_safe, tools_path, class: "btn btn-primary" %>
+          <%= link_to "back to all tools".html_safe, tools_path, class: "" %>
         </div>
       </div>
-      <div class="col col-md-5 col-lg-4">
+      <div class="col col-md-5 col-lg-4 mt-5">
         <div class="tool-booking-form sticky-top">
           <%= render "bookings/booking_form" %>
         </div>
