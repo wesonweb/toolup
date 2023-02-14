@@ -1,24 +1,24 @@
-<<<<<<< HEAD
-<div class="main-card">
-<h1> Your toolUp bookings: </h1>
-  <div class="tool-name">
-
-    <h1> You made a booking </h1>
-    <h2> Have fun! </h2>
-    <p> You booked <%=@tool.name%> </p>
-=======
 <div class="container-md">
   <div class="row my-4 justify-content-center">
     <div class="col col-md-8">
-      <h1>Thank you for booking with toolUp </h1>
-      <h2>Your booking for ____ is confirmed.</h2>
-      <p>Image of tool to go here</p>
+      <h1>Thank you for booking with </h1>
+      <div class="logo-on-page">
+      <%= show_svg('logo4.svg') %>
+      </div>
+      <br>
+      <h2>Your booking for <%= @booking.tool.name%> is confirmed.</h2>
+      <br>
+      <p><img src="<%=@booking.tool.image_url%>" class="card-img-top photo-on-page" alt="picture of a <%=@booking.tool.name %>"></p>
     </div>
     <div class="col col-md-4">
       <h2> Booking details </h2>
       <p> You can view your booking details below. </p>
+      <ul>
+      <li> <%= @booking.tool.name%> booked for <%= %> days </li>
+      <li> Total price: £ <%= %> </li>
+
+      </ul>
     </div>
->>>>>>> master
   </div>
   <div class="row my-4 justify-content-center">
     <div class="col col-md-8 d-flex">

@@ -14,10 +14,13 @@ class BookingsController < ApplicationController
   # end
 
   def show
+    @booking = Booking.find(params[:id])
+  end
+
+  def show_all
     @tool = Tool.where(user: current_user)
     # @tool = Tool.find(params[:tool_id])
     @booking = Booking.where(user: current_user)
-    raise
   end
 
   def create
