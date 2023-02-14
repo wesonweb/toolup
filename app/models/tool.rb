@@ -1,5 +1,5 @@
 class Tool < ApplicationRecord
-  NAMES = ["Hammer", "Circular saw", "Axe", "Drill", "Clamp"]
+  NAMES = ["Circular saw", "Jigsaw", "Drill", "Clamp", "Lawnmower", "Leaf blower", "Sander"]
 
   belongs_to :user
   # has_many :review, through: :booking, dependnt: :destroy

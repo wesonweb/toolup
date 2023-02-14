@@ -6,36 +6,39 @@
 #   movies = Movie.create([{ type: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+puts "cleaning database..."
+Booking.destroy_all
+Tool.destroy_all
 puts "seeding database with tools..."
 tools = Tool.create!([
   {
-    name: "Hammer",
-    description: "New hammer, never used",
-    price: 10,
+    name: "Drill",
+    description: "DeWalt cordless drill, with two batteries. 50 minute quick charge. Comes with case.",
+    price: 15,
     postcode: "N7 9HF",
-    image_url: "https://images.ffx.co.uk/tools/CLHF20.jpg?w=1280&h=960&scale=both",
+    image_url: "https://www.toolup.com/product-images/DeWalt-DCD940KX_10.jpg",
     user_id: 1
   },
   { name: "Circular saw",
-    description: "Circular saw in mint condition, complete with blade",
+    description: "DeWalt circular saw, 240v, 165mm blade. Comes with 2 batteries, charger and case",
     price: 25,
     postcode: "SE28 0EL",
-    image_url: "https://ik.imagekit.io/pimberly/5a573819182f915efb7bd083/b10a96d7/5b029b97c3a6660178c96faf.jpg",
+    image_url: "https://www.neoadviser.com/wp-content/uploads/2019/01/1-1.jpg",
     user_id: 1
   },
   { name: "Drill",
     description: "Makita cordless drill, 18v, 2 batteries, charger, case",
-    price: 30,
+    price: 20,
     postcode: "SW3 3PX",
     image_url: "https://itslondon.s3.amazonaws.com/p/alt/xxl/MAK453SET52_2.jpg",
     user_id: 1
   },
   {
-    name: "Axe",
-    description: "Axe in good condition",
-    price: 15,
+    name: "Jigsaw",
+    description: "Bosch Electric Jigsaw. 500W motor and 70 mm cutting depth.",
+    price: 10,
     postcode: "E7 0EN",
-    image_url: "https://cdn.shopify.com/s/files/1/0331/2805/4922/files/CGT05650_1_2048x2048.jpg?v=1612217326",
+    image_url: "https://cdn.store-assets.com/s/14425/i/2766186.gif",
     user_id: 1
   },
   {
@@ -45,6 +48,30 @@ tools = Tool.create!([
     postcode: "NW3 5RN",
     image_url: "https://i5.walmartimages.com/asr/1466f16e-a7ac-4b56-8324-a91522f565d8_1.d35c799abde6ed00c68f49302e9da608.jpeg",
     user_id: 1
+  },
+  {
+    name: "Lawnmower",
+    description: "Good quality electric lawnmower. Comes with 20m extension lead",
+    price: 25,
+    postcode: "N11 5RQ",
+    image_url: "https://www.thespruce.com/thmb/qE5BgnZM0088uSs6NJ7UAmuo8iY=/1500x1500/filters:fill(auto,1)/1SP4142310-Greenworks-Push-Mower_HeroSquare-c25b5e052ed74bfa9f17112eb6da5dc2.jpg",
+    user_id: 1
+  },
+  {
+    name: "Leaf blower",
+    description: "Powerful leaf blower, great for clearing up fallen leaves in the garden",
+    price: 10,
+    postcode: "N11 5RQ",
+    image_url: "https://www.chartattack.com/wp-content/uploads/2019/09/leaf.jpg",
+    user_id: 1
+  },
+  {
+    name: "Sander",
+    description: "Hand-held sander. Variable speed and dust bag for dust extraction. Comes with sanding discs",
+    price: 10,
+    postcode: "SW4 6SE",
+    image_url: "https://images-na.ssl-images-amazon.com/images/I/71mgCg-MfyL.jpg",
+    user_id: 1
   }
 ])
-puts "done!"
+puts "Created tools!"

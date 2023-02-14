@@ -1,47 +1,35 @@
+<div class="tool-body py-5">
+  <div class="container-sm">
 
-<div class="main-card">
-  <div class="tool-name">
-    <h1><%= @tool.name %></h1>
-  </div>
-
-<div class="tool-details container mb-5">
-  <div class="justify-content-between my-4">
-       <h2> Tool details</h2>
-
-<p> This <%= @tool.name%> is located at <%= @tool.postcode %> </p>
-<p> AMAZING MAP HERE </p>
-<p> This tool costs £<%= @tool.price%> per day
-<p> Tool description: <%= @tool.description %></p>
-<p> See the photos: </p>
-<p><img src=<%=@tool.image_url%> class="tool-img"> </p>
-<br><br>
-   <%= render "bookings/booking_form" %>
-<br><br>
-<h3> Reviews </h3>
-<p> See what our users said about this <%= @tool.name %> </p>
-
-  <%# <% @tool.reviews.each do |review| %>
-  <%# <li><%= review.rating </li> %>
-  <%# <li> <%= review.comment </li> %>
-  <%# <% end%>
-
-  </div>
-
-  <%# <div class="reviews"> %>
-      <%# <% if @tools.reviews.empty? %>
-        <%# <small><em class="text-muted"> No reviews yet </em></small> %>
-      <%# <% end %>
-      <%# <% @tools.reviews.each do |review| %>
-        <%# <div> %>
-          <%# <% review.rating.times do %>
-            <%# <i class="fas fa-star star-yellow"></i> %>
-          <%# <% end %>
-          <%# <small><em class="text-muted"><%= distance_of_time_in_words_to_now(review.created_at) ago</em></small> %>
-          <%# <p class="mb-0"><%= review.comment %></p>
-        <%# </div> %>
-        <%# <hr> %>
-      <%# <% end %>
+    <div class="row justify-content-center p-2">
+      <div class="col col-md-7 col-lg-5">
+        <div class="header mb-3">
+          <h1><%= @tool.name %></h1>
+        </div>
+        <%= image_tag @tool.image_url, alt: "#{@tool.description}", class: "mb-4 img-fluid tool-show-img" %>
+        <div class="tool-description my-3">
+          <h2>Tool description</h2>
+          <p><%= @tool.description %></p>
+        </div>
+        <div class="tool-location mt-3">
+          <h3>Location</h3>
+          <p> This <%= @tool.name%> is located at <%= @tool.postcode %> </p>
+          <p>MAP GOES HERE</p>
+        </div>
+        <div class="tool-reviews mt-3">
+          <h3 class="mt-3">Reviews</h3>
+          <p> See what our users said about this <%= @tool.name %> </p>
+        </div>
+        <div class="col col-md-7 col-lg-5">
+          <%= link_to "back to all tools".html_safe, tools_path, class: "" %>
+        </div>
       </div>
-          <p class="btn btn-success btn-lg"> <%= link_to "<button>Back to Tools </button>".html_safe, tools_path %> </p>
+      <div class="col col-md-5 col-lg-4 mt-5">
+        <div class="tool-booking-form sticky-top">
+          <%= render "bookings/booking_form" %>
+        </div>
+      </div>
     </div>
+
   </div>
+</div>
