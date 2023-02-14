@@ -1,15 +1,15 @@
 class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_list, only: [:show, :destroy]
+  before_action :set_list, only: %i[show destroy]
   def index
-   # @tools = Tool.all
+    # @tools = Tool.all
 
-   #temp
+    # temp
     if params[:search].present?
       tmp_tools = Tool.where("description ILIKE ?", "%#{params[:search]}%")
     else
       tmp_tools = Tool.all
-      #@tools = Tool.all.order('tools.price ASC')
+      # @tools = Tool.all.order('tools.price ASC')
     end
     if params[:order].present?
       if params[:order] == "asc"
@@ -25,6 +25,10 @@ class ToolsController < ApplicationController
   def show
     @booking = Booking.new
     @review = Review.new
+    @markers = {
+      lat: @tool.latitude,
+      lng: @tool.longitude
+    }
   end
 
   def new
