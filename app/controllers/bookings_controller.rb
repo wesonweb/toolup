@@ -14,8 +14,10 @@ class BookingsController < ApplicationController
   # end
 
   def show
-    @tools = Tool.where(user: current_user)
-    @bookings = Booking.where(user: current_user)
+    @tool = Tool.where(user: current_user)
+    # @tool = Tool.find(params[:tool_id])
+    @booking = Booking.where(user: current_user)
+    raise
   end
 
   def create
@@ -39,7 +41,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :name, :price, :postcode)
   end
 
   def set_booking
