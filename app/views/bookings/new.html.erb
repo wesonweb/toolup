@@ -1,8 +1,0 @@
-
-<h3>Add this tool to your booking list</h3>
-<%= simple_form_for [@tool, @booking] do |f| %>
- <%=f.input :start_date, placeholder: "Please select the start date" %>
- <%= f.input :end_date, placeholder: "Please select the end date"%>
- <%= f.association :tool, prompt: "Select a tool", input_html: {data: {controller: "tom-select"}}%>
- <%= f.submit %>
- <%end%>

@@ -33,6 +33,8 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
+    @tool = tool.find(params[:recipe_id])
+    @review = Review.new(review_params)
   end
 
   def create

@@ -1,6 +1,5 @@
 class Tool < ApplicationRecord
   NAMES = ["Circular saw", "Jigsaw", "Drill", "Clamp", "Lawnmower", "Leaf blower", "Sander"]
-
   belongs_to :user
 
   geocoded_by :address
