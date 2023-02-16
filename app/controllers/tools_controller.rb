@@ -23,12 +23,14 @@ class ToolsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
     @review = Review.new
+    @booking = Booking.new
   end
 
   def new
     @tool = Tool.new
+    @tool = tool.find(params[:recipe_id])
+    @review = Review.new(review_params)
   end
 
   def create

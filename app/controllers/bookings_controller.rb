@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all
+    @review = Review.new
     # @tools = Tool.all
     # @tool = Tool.find(params[:tool_id])
   end
@@ -15,6 +16,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @review = Review.new(booking_id: @booking)
   end
 
   def show_all

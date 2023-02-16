@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_210354) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "tools", force: :cascade do |t|
@@ -65,6 +66,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_210354) do
 
   add_foreign_key "bookings", "tools"
   add_foreign_key "bookings", "users"
-  add_foreign_key "reviews", "bookings"
+  add_foreign_key "bookings", "reviews"
+  # add_foreign_key "reviews", "bookings"
   add_foreign_key "tools", "users"
 end
