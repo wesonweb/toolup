@@ -12,16 +12,17 @@
 </div>
   <ol class="list-group list-group-numbered">
   <% @bookings.each do |booking| %>
-  <li class="list-group-item d-flex justify-content-between align-items-start">
+  <li class="list-group-item d-flex align-items-center justify-content-between align-items-start">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Tool: <%= booking.tool.name %></div>
-      <small class="flex-grow-1">From: <%= booking.start_date %></small>
-      <small class="flex-grow-1">To: <%= booking.end_date %></small>
-      <small class="flex-grow-1">Booking made on: <%= booking.date %></small>
+      <small class="flex-grow-1"><strong>From:</strong> <%= booking.start_date.strftime("%d/%m/%Y") %></small>
+      <small class="flex-grow-1"><strong>To:</strong> <%= booking.end_date.strftime("%d/%m/%Y") %></small>
+      <small class="flex-grow-1">Booking made on: <%= booking.date.strftime("%d/%m/%Y")  %></small>
       <small class="flex-grow-1"><%= booking.status %></small>
     </div>
-      <%= link_to "delete", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your booking"}, class: "badge bg-danger rounded-pill text-light" %>
-      <%= link_to "view this tool", tool_path(booking.tool), class: "badge bg-primary rounded-pill text-light" %>
+      <%= link_to "delete", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your booking"}, class: "badge bg-danger rounded-pill text-light text-decoration-none me-1" %>
+      <%= link_to "view this tool", tool_path(booking.tool), class: "badge bg-primary rounded-pill text-light text-decoration-none" %>
+      <%= link_to "view this booking", booking_path(booking), class: "badge bg-success rounded-pill text-light" %>
     <% end %>
     </li>
     </ol>

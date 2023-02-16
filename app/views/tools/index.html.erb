@@ -53,9 +53,7 @@ function getSort() {
                         &#9733;
                         <% end %>
                       </h3>
-                      <p class="card-text"><small class="text-muted mb-auto">Location: <%= tool.postcode %>
-                      <!--(<%=rand(0.5...5).round(2)%> miles from you)-->
-                      </small></p>
+                      <p class="card-text"><small class="text-muted mb-auto">Location: <%= tool.address %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
                       <%= link_to "View this tool", tool_path(tool), class: "btn btn-primary w-100 align-self-end" %>
                     </div>
                   </div>

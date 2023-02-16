@@ -1,10 +1,10 @@
 class ToolsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_list, only: [:show, :destroy]
+  before_action :set_list, only: %i[show destroy]
   def index
-   # @tools = Tool.all
+    # @tools = Tool.all
 
-   #temp
+    # temp
     if params[:search].present?
       sql_query = "name ILIKE :search OR description ILIKE :search"
       tmp_tools = Tool.where(sql_query, search: "%#{params[:search]}%")
@@ -12,7 +12,7 @@ class ToolsController < ApplicationController
     #tmp_tools = Tool.search_by_name_and_description(params[:search])
     else
       tmp_tools = Tool.all
-      #@tools = Tool.all.order('tools.price ASC')
+      # @tools = Tool.all.order('tools.price ASC')
     end
     if params[:order].present?
       if params[:order] == "asc"
@@ -28,10 +28,16 @@ class ToolsController < ApplicationController
   def show
     @booking = Booking.new
     @review = Review.new
+    @markers = {
+      lat: @tool.latitude,
+      lng: @tool.longitude
+    }
   end
 
   def new
     @tool = Tool.new
+    @tool = tool.find(params[:recipe_id])
+    @review = Review.new(review_params)
   end
 
   def create
