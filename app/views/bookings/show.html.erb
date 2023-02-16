@@ -1,19 +1,43 @@
 <div class="container-md">
   <div class="row my-4 justify-content-center">
     <div class="col col-md-8">
-      <h1>Thank you for booking with toolUp </h1>
-      <h2>Your booking for ____ is confirmed.</h2>
-      <p>Image of tool to go here</p>
+      <h1>Thank you for booking with </h1>
+      <div class="logo-on-page">
+      <%= show_svg('logo4.svg') %>
+      </div>
+      <br>
+      <h2>Your booking for <%= @booking.tool.name%> is confirmed.</h2>
+      <br>
+      <p><img src="<%=@booking.tool.image_url%>" class="card-img-top photo-on-page" alt="picture of a <%=@booking.tool.name %>"></p>
     </div>
     <div class="col col-md-4">
       <h2> Booking details </h2>
       <p> You can view your booking details below. </p>
+      <ul>
+      <li> <%= @booking.tool.name%> booked for <%= lenght = ((@booking.end_date - @booking.start_date).to_i + 1) %> days </li>
+      <li> Your booking start date: <%=@booking.start_date %> </li>
+      <li> Your booking end date: <%=@booking.end_date%> </li>
+      <li> Total price: £<%=(@booking.tool.price * lenght) %> </li>
+      <li> You can pick up your tool on <%=@booking.end_date%> at <%=@booking.tool.postcode%> </li>
+      </ul>
+      <p class="pt-2"> Did you love it? Did you hate it? Leave a review!</p>
+      <div class="col-12 col-sm-6">
+      <div class="bg-white rounded p-3">
+        <h5>Add your review</h5>
+        <%= simple_form_for [@booking, @review] do |f| %>
+          <%= f.input :comment, placeholder: "Add your review here..." %>
+          <%= f.input :rating, as: :select, collection: (1..5), required: true, prompt: "What's your rating", input_html: { data: { controller: "star-rating" } } %>
+          <%= f.submit class:"btn btn-flat" %>
+        <% end %>
+      </div>
+    </div>
+
     </div>
   </div>
   <div class="row my-4 justify-content-center">
     <div class="col col-md-8 d-flex">
       <%= link_to "Borrow another tool", tools_path, class: "btn btn-primary mt-3 cta" %>
-      <%# link_to "View your bookings", bookings_path, class: "btn btn-primary mt-3" %>
+      <%= link_to "View all your bookings", bookings_path, class: "btn btn-primary mt-3" %>
 
     </div>
   </div>

@@ -7,11 +7,14 @@ Rails.application.routes.draw do
 
   resources :tools, except: [:edit, :update] do
     resources :bookings, only: [:new, :create] do
-      resources :reviews, only: [:new, :create]
+      # resources :reviews, only: [:new, :create]
     end
   end
-  resources :bookings, only: [:destroy, :index, :show]
+  resources :bookings, only: [:destroy, :index, :show] do
+    resources :reviews, only: [:new, :create, :edit, :update]
+  end
 
+  resources :reviews, only: [:destroy]
 
   # resources :reviews
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
