@@ -6,11 +6,19 @@
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
-
+.navbar-nav {
+  align-items: center;
+}
 .nav-link {
+  font-size: 1.1rem;
   color: $gray;
 }
 
 .toolup-logo-banner {
   height: 100px;
+}
+
+svg {
+  height: 60px;
+  margin-left: -130px;
 }
