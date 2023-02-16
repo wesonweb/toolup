@@ -17,7 +17,7 @@
       <div class="fw-bold">Tool: <%= booking.tool.name %></div>
       <small class="flex-grow-1"><strong>From:</strong> <%= booking.start_date.strftime("%d/%m/%Y") %></small>
       <small class="flex-grow-1"><strong>To:</strong> <%= booking.end_date.strftime("%d/%m/%Y") %></small>
-      <small class="flex-grow-1">Booking made on: <%= booking.date %></small>
+      <small class="flex-grow-1">Booking made on: <%= booking.date.strftime("%d/%m/%Y")  %></small>
       <small class="flex-grow-1"><%= booking.status %></small>
     </div>
       <%= link_to "delete", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your booking"}, class: "badge bg-danger rounded-pill text-light text-decoration-none me-1" %>
