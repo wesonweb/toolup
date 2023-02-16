@@ -6,7 +6,11 @@ class ToolsController < ApplicationController
 
    #temp
     if params[:search].present?
-      tmp_tools = Tool.where("description ILIKE ?", "%#{params[:search]}%")
+      #tmp_tools = Tool.where("description ILIKE ?", "%#{params[:search]}%")
+      sql_query = "name ILIKE :search OR description ILIKE :search"
+      tmp_tools = Tool.where(sql_query, search: "%#{params[:search]}%")
+
+    #tmp_tools = Tool.search_by_name_and_description(params[:search])
     else
       tmp_tools = Tool.all
       #@tools = Tool.all.order('tools.price ASC')
