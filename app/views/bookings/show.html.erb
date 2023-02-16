@@ -14,11 +14,11 @@
       <h2> Booking details </h2>
       <p> You can view your booking details below. </p>
       <ul>
-      <li> <%= @booking.tool.name%> booked for <%= lenght = ((@booking.end_date - @booking.start_date).to_i + 1) %> days </li>
-      <li> Your booking start date: <%=@booking.start_date %> </li>
-      <li> Your booking end date: <%=@booking.end_date%> </li>
-      <li> Total price: £<%=(@booking.tool.price * lenght) %> </li>
-      <li> You can pick up your tool on <%=@booking.end_date%> at <%=@booking.tool.postcode%> </li>
+      <li> <%= @booking.tool.name%> booked for <%= length = ((@booking.end_date - @booking.start_date).to_i + 1) %> days </li>
+      <li> Your booking start date: <%=@booking.start_date.strftime("%d/%m/%y") %> </li>
+      <li> Your booking end date: <%=@booking.end_date.strftime("%d/%m/%y") %> </li>
+      <li> Total price: £<%=(@booking.tool.price * length) %> </li>
+      <li> You can pick up your tool on <%=@booking.end_date.strftime("%d/%m/%y") %> at <%=@booking.tool.address %> </li>
       </ul>
       <p class="pt-2"> Did you love it? Did you hate it? Leave a review!</p>
       <div class="col-12 col-sm-6">
