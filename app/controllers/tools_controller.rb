@@ -33,12 +33,14 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
-    @tool = tool.find(params[:recipe_id])
-    @review = Review.new(review_params)
+    # @tool = tool.find(params[:recipe_id])
+    # @review = Review.new(review_params)
   end
 
   def create
     @tool = Tool.new(tool_params)
+    @tool.user = current_user
+
     if @tool.save
       redirect_to tool_path(@tool)
     else
@@ -59,6 +61,6 @@ class ToolsController < ApplicationController
   end
 
   def tool_params
-    params.require(:tool).permit(:name, :price, :postcode, :description)
+    params.require(:tool).permit(:name, :price, :address, :description, :photo)
   end
 end
