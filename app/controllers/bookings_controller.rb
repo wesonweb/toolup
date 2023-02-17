@@ -4,10 +4,7 @@ class BookingsController < ApplicationController
   # before_action :set_tool, only: %i[new create]
 
   def index
-    @bookings = Booking.all
-
-    # @tools = Tool.all
-    # @tool = Tool.find(params[:tool_id])
+    @bookings = Booking.where('user_id = ?',current_user)
   end
 
   def new
