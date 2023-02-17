@@ -1,28 +1,28 @@
 require 'date'
 class BookingsController < ApplicationController
-  before_action :set_booking, only: :destroy
+  before_action :set_booking, only: %i[destroy show]
   # before_action :set_tool, only: %i[new create]
 
   def index
     @bookings = Booking.all
-    @review = Review.new
+
     # @tools = Tool.all
     # @tool = Tool.find(params[:tool_id])
   end
 
-  # def new
-  #   @booking = Booking.new
-  # end
+  def new
+  @booking = Booking.new
+  end
 
   def show
-    @booking = Booking.find(params[:id])
-    @review = Review.new(booking_id: @booking)
+    @review = Review.new
   end
 
   def show_all
     @tool = Tool.where(user: current_user)
-    # @tool = Tool.find(params[:tool_id])
+
     @booking = Booking.where(user: current_user)
+    @tool = @booking.tool
   end
 
   def create
@@ -54,6 +54,6 @@ class BookingsController < ApplicationController
   end
 
   def set_tool
-    @tool = Tool.find(params[:id])
+    @tool = Tool.find(params[:tool_id])
   end
 end

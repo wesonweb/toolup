@@ -1,18 +1,19 @@
 class ReviewsController < ApplicationController
 
   def new
-    @tool = tool.find(params[:recipe_id])
-    @review = Review.new(review_params)
+    @booking = Booking.find(params[:booking_id])
+    @tool = @booking.tool
+    @review = Review.new
   end
 
   def create
-    @user = User.find params[:id]
-    @booking = Booking.find(params[:id])
-    @tool = Tool.find(params[:tool_id])
+    # @user = current_user
+    @booking = Booking.find(params[:booking_id])
+    @tool = @booking.tool
     @review = Review.new(review_params)
-    @review.tool = @tool
-    @review.user = current_user
+    # @review.user = current_user
     @review.booking = @booking
+
     if @review.save
       redirect_to tool_path(@tool)
     else

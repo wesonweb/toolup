@@ -24,9 +24,9 @@
           <h3 class="mt-3">Reviews</h3>
           <p> See what our users said about this <%= @tool.name %> </p>
           <ul>
-           <% if @tool.reviews.empty? %>
+           <% if @booking.reviews.empty? %>
              <p> No reviews yet</p>
-              <% @tool.reviews.each do |review| %>
+              <% @booking.reviews.each do |review| %>
                 <% review.rating.times do %>
                   <i class="fas fa-star star-yellow"></i>
                 <% end %>

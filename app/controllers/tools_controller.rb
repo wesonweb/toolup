@@ -1,5 +1,5 @@
 class ToolsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: %i[index new create]
   before_action :set_list, only: %i[show destroy]
   def index
     # @tools = Tool.all
@@ -40,6 +40,7 @@ class ToolsController < ApplicationController
   def create
     @tool = Tool.new(tool_params)
     @tool.user = current_user
+    @tool.image_url = "https://itslondon.s3.amazonaws.com/p/alt/xxl/MAK453SET52_2.jpg"
 
     if @tool.save
       redirect_to tool_path(@tool)
@@ -61,6 +62,6 @@ class ToolsController < ApplicationController
   end
 
   def tool_params
-    params.require(:tool).permit(:name, :price, :address, :description, :photo)
+    params.require(:tool).permit(:name, :price, :address, :description, :image_url, :photo)
   end
 end
