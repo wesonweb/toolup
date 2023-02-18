@@ -21,7 +21,7 @@
         <small class="flex-grow-1"><%= booking.status %></small>
       </div>
         <%= link_to "delete", booking_path(booking), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove your booking"}, class: "badge bg-danger rounded-pill text-light text-decoration-none me-1" %>
-        <%= link_to "view this tool", tool_path(booking.tool), class: "badge bg-primary rounded-pill text-light text-decoration-none" %>
+        <%= link_to "view this tool", tool_path(booking.tool), class: "badge bg-primary rounded-pill text-light text-decoration-none me-1" %>
         <%= link_to "view this booking", booking_path(booking), class: "badge bg-success rounded-pill text-light" %>
       <% end %>
       </li>

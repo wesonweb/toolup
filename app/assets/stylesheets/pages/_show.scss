@@ -79,3 +79,12 @@ a {
   max-width: 300px;
   margin: auto;
 }
+
+.confirmation__img {
+  display: block;
+  height: 400px;
+  width: 80%;
+  margin: auto;
+  object-fit: cover;
+  object-position: center;
+}

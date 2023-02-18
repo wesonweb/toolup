@@ -31,13 +31,14 @@
               <% review.rating.times do %>
                 <i class="fas fa-star star-yellow"></i>
              <% end %>
+
                <p class="mb-0"><%= review.comment %></p>
               <% end %>
            <% end %>
           </ul>
         </div>
         <div class="col col-md-7 col-lg-5">
-          <%= link_to "back to all tools".html_safe, tools_path, class: "" %>
+          <i class="fa-regular fa-hand-point-left me-1"></i><%= link_to "back to all tools".html_safe, tools_path, class: "" %>
         </div>
       </div>
       <div class="col col-md-5 col-lg-4 mt-5">
