@@ -1,6 +1,7 @@
 class ToolsController < ApplicationController
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: %i[index ]
   before_action :set_list, only: %i[show destroy]
+
   def index
     # @tools = Tool.all
 
@@ -29,8 +30,9 @@ class ToolsController < ApplicationController
   end
 
   def show
-    @booking = Booking.new
-    @review = Review.new
+     @booking = Booking.new
+     @reviews = Review.joins(:booking).where(['bookings.tool_id= ?',params[:id]])
+
     @markers = {
       lat: @tool.latitude,
       lng: @tool.longitude
@@ -39,11 +41,17 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4e172df09346c10643cedcb02e9bece1ce9c3bf2
   end
 
   def create
     @tool = Tool.new(tool_params)
+    @tool.user = current_user
+    @tool.image_url = "https://itslondon.s3.amazonaws.com/p/alt/xxl/MAK453SET52_2.jpg"
+
     if @tool.save
       redirect_to tool_path(@tool)
     else
@@ -64,6 +72,6 @@ class ToolsController < ApplicationController
   end
 
   def tool_params
-    params.require(:tool).permit(:name, :price, :postcode, :description)
+    params.require(:tool).permit(:name, :price, :address, :description, :image_url)
   end
 end

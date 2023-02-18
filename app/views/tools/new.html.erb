@@ -8,6 +8,7 @@
         <%= f.input :price, required: true, hint: 'enter the price per day', placeholder: 'eg £10' %>
         <%= f.input :address, required: true, hint: 'Enter your postcode', placeholder: 'eg NW6 7QA' %>
         <%= f.input :description, required: true, hint: 'describe the tool you are lending', placeholder: 'eg electric lawnmower' %>
+        <%= f.input :photo, as: :file %>
         <%= f.button :submit, "Add your tool",  class: 'btn btn-primary' %>
       <% end %>
     </div>

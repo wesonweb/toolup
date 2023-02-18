@@ -7,8 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "cleaning database..."
+Review.destroy_all
 Booking.destroy_all
 Tool.destroy_all
+
 puts "seeding database with tools..."
 tools = Tool.create!([
   {
