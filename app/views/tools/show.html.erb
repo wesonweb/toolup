@@ -25,7 +25,7 @@
           <p> See what our users said about this <%= @tool.name %> </p>
           <ul>
            <% if @tool.reviews.empty? %>
-             <p> No reviews yet</p>
+             <p> No reviews yet Be the first to review this <%=@tool.name %></p>
               <% @tool.reviews.each do |review| %>
                 <% review.rating.times do %>
                   <i class="fas fa-star star-yellow"></i>
