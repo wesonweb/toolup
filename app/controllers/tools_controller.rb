@@ -14,15 +14,18 @@ class ToolsController < ApplicationController
       tmp_tools = Tool.all
       # @tools = Tool.all.order('tools.price ASC')
     end
-    if params[:order].present?
+    if params[:order].present? && current_user.present?
       if params[:order] == "asc"
         @tools = tmp_tools.order('tools.price ASC')
-      else
+      elsif params[:order] == "desc"
         @tools = tmp_tools.order('tools.price DESC')
+      else
+        @tools = tmp_tools.near(Geocoder.coordinates(current_user.postcode))
       end
     else
       @tools = tmp_tools
     end
+
   end
 
   def show
@@ -36,8 +39,7 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
-    @tool = tool.find(params[:recipe_id])
-    @review = Review.new(review_params)
+
   end
 
   def create
