@@ -41,10 +41,6 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
-<<<<<<< HEAD
-
-=======
->>>>>>> 4e172df09346c10643cedcb02e9bece1ce9c3bf2
   end
 
   def create
