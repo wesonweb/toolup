@@ -1,3 +1,4 @@
+
 <div class="container-md">
   <div class="row my-4 justify-content-center">
     <div class="col col-md-8">
@@ -12,6 +13,10 @@
     </div>
     <div class="col col-md-4 mt-4">
       <h2 class="fs-3">Booking details </h2>
+      <% booking = @booking.end_date %>
+      <% if booking.past? %>
+        <p class="lead danger">This booking is in the past<p>
+      <% end %>
       <ul class="list-group my-3">
         <li class="list-group-item"> <%= @booking.tool.name%> booked for <%= length = ((@booking.end_date - @booking.start_date).to_i + 1) %> <%= length == 1 ? "day" : "days" %> </li>
         <li class="list-group-item"> Your booking start date: <%=@booking.start_date.strftime("%d/%m/%y") %> </li>
