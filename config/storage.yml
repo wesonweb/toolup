@@ -1,6 +1,6 @@
 cloudinary:
-service: Cloudinary
-folder: <%= Rails.env %>
+  service: Cloudinary
+  folder: <%= Rails.env %>
 
 test:
   service: Disk
