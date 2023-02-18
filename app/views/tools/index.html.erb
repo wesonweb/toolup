@@ -19,32 +19,31 @@ function getSort() {
 
 </script>
 <div class="tools-body">
-  <div class="container-lg py-3 mt-4">
-  <h2 class="h3">Tools available nearby</h2>
-  <div class="input-group rounded">
-    <input type="search" id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value=<%= params[:search]%> >
-    <span class="input-group-text border-0" id="search-addon">
-      <i class="fas fa-search pe-auto" onclick='getSearch()'></i>
-    </span>
-  </div>
-  <div class="card-body py-1 rounded">
-    <!-- AUTO COMPLETE DROPDOWN -->
-    <select id="sort" class="selectpicker form-control form-select form-select-sm border mt-1 mb-1 px-1 py-1 rounded" onchange='getSort()'>
-        <option selected>Sort by</option>
-        <option value="order=distance">Distance (nearest first)</option>
-        <option value="order=asc">Price (lowest first)</option>
-        <option value="order=desc">Price (highest first)</option>
-        <option value="Rating_high">Rating (highest first)</option>
-        <option value="Rating_low">Rating (lowest first)</option>
-    </select>
-  </div>
+  <div class="container py-3 my-3 location-section">
+    <h2 class="h3">Tools available nearby</h2>
+    <div class="input-group rounded">
+      <input type="search" id="search_text" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value=<%= params[:search]%> >
+      <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search pe-auto" onclick='getSearch()'></i>
+      </span>
+    </div>
+    <div class="card-body py-1 mb-3 rounded">
+      <select id="sort" class="selectpicker form-control form-select form-select-sm border mt-1 mb-1 px-1 py-1 rounded" onchange='getSort()'>
+          <option selected>Sort by</option>
+          <option value="order=distance">Distance (nearest first)</option>
+          <option value="order=asc">Price (lowest first)</option>
+          <option value="order=desc">Price (highest first)</option>
+          <option value="Rating_high">Rating (highest first)</option>
+          <option value="Rating_low">Rating (lowest first)</option>
+      </select>
+    </div>
       <div class="row mt-2 card-group">
           <%# <div class="col rounded p-3"> %>
           <% @tools.each do |tool| %>
               <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
                 <div class="card rounded-3 shadow mb-3 h-100 border-0">
                 <% if  tool.photo.attached? %>
-                 <%= cl_image_tag @tool.photo.key, height: 300, width: 400, crop: :fill %>
+                  <%= cl_image_tag @tool.photo.key, height: 300, width: 400, crop: :fill %>
                 <% else %>
                 <img src="<%=tool.image_url%>" class="card-img-top tool-img" alt="picture of a <%=tool.name %>">
                 <% end %>
@@ -57,13 +56,11 @@ function getSort() {
                         &#9733;
                         <% end %>
                       </h3>
-                      <p class="card-text"><small class="text-muted mb-auto">Location: <%= tool.address %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
                       <% if current_user.present? %>
-                      ( <%= Geocoder::Calculations.distance_between(Geocoder.coordinates(current_user.postcode), [tool.latitude, tool.longitude]).round(2) %> miles from you )
+                      <p class="card-text"><small class="text-muted mb-auto">Location: <%= Geocoder::Calculations.distance_between(Geocoder.coordinates(current_user.postcode), [tool.latitude, tool.longitude]).round(2) %> miles from you</small></p>
                       <% end %>
                       <%= link_to "View this tool", tool_path(tool), class: "btn btn-primary w-100 align-self-end stretched-link" %>
                       <%# link_to tool_path(tool), class: "stretched-link" %>
-                      <%= link_to "View this tool", tool_path(tool), class: "btn btn-primary w-100 align-self-end" %>
                     </div>
                   </div>
               </div>
@@ -71,5 +68,6 @@ function getSort() {
           </div>
 
       </div>
+  </div>
   </div>
 </div>
