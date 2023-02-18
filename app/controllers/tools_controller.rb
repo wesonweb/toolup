@@ -7,20 +7,26 @@ class ToolsController < ApplicationController
 
     # temp
     if params[:search].present?
-      tmp_tools = Tool.where("description ILIKE ?", "%#{params[:search]}%")
+      sql_query = "name ILIKE :search OR description ILIKE :search"
+      tmp_tools = Tool.where(sql_query, search: "%#{params[:search]}%")
+
+    #tmp_tools = Tool.search_by_name_and_description(params[:search])
     else
       tmp_tools = Tool.all
       # @tools = Tool.all.order('tools.price ASC')
     end
-    if params[:order].present?
+    if params[:order].present? && current_user.present?
       if params[:order] == "asc"
         @tools = tmp_tools.order('tools.price ASC')
-      else
+      elsif params[:order] == "desc"
         @tools = tmp_tools.order('tools.price DESC')
+      else
+        @tools = tmp_tools.near(Geocoder.coordinates(current_user.postcode))
       end
     else
       @tools = tmp_tools
     end
+
   end
 
   def show
