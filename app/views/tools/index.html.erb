@@ -43,7 +43,11 @@ function getSort() {
           <% @tools.each do |tool| %>
               <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
                 <div class="card rounded-3 shadow mb-3 h-100 border-0">
-                  <img src="<%=tool.image_url%>" class="card-img-top tool-img" alt="picture of a <%=tool.name %>">
+                <% if  tool.photo.attached? %>
+                 <%= cl_image_tag @tool.photo.key, height: 300, width: 400, crop: :fill %>
+                <% else %>
+                <img src="<%=tool.image_url%>" class="card-img-top tool-img" alt="picture of a <%=tool.name %>">
+                <% end %>
                     <div class="card-body py-3 d-flex align-items-start flex-column">
                       <h2 class="card-title fs-3"><%= tool.name %></h2>
                       <p class="card-text">Price: £<%= tool.price %> / day</p>
@@ -53,13 +57,12 @@ function getSort() {
                         &#9733;
                         <% end %>
                       </h3>
-                      <p class="card-text"><small class="text-muted mb-auto">Location: <%= tool.address %>
-                      <!--
-                      (<%=rand(0.5...5).round(2)%> miles from you)-->
+                      <p class="card-text"><small class="text-muted mb-auto">Location: <%= tool.address %> (<%=rand(0.5...5).round(2)%> miles from you)</small></p>
                       <% if current_user.present? %>
                       ( <%= Geocoder::Calculations.distance_between(Geocoder.coordinates(current_user.postcode), [tool.latitude, tool.longitude]).round(2) %> miles from you )
                       <% end %>
-                      </small></p>
+                      <%= link_to "View this tool", tool_path(tool), class: "btn btn-primary w-100 align-self-end stretched-link" %>
+                      <%# link_to tool_path(tool), class: "stretched-link" %>
                       <%= link_to "View this tool", tool_path(tool), class: "btn btn-primary w-100 align-self-end" %>
                     </div>
                   </div>
